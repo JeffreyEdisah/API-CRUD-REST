@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 
@@ -30,6 +31,7 @@ public class CommissionController {
 
     @PostMapping(value = "/add")
     public Optional<CommissionEntity> addCommission(@RequestBody CommissionEntity commission){
+        commission.setDate(LocalDate.now());
         commissionRepository.save(commission);
         return commissionRepository.findById(commission.getId());
     }
