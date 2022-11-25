@@ -45,6 +45,7 @@ public class CommissionController {
     @PutMapping(value = "update/{id}")
     public void updateCommission(@RequestBody CommissionEntity commission, @PathVariable long id){
         commission.setId(id);
+        commission.setDate(LocalDate.now());
         commissionRepository.save(commission);
     }
 
